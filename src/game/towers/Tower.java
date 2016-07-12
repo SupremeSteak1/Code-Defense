@@ -1,4 +1,4 @@
-package game;
+package game.towers;
 
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
@@ -8,6 +8,8 @@ import engine.frontend.Renderable;
 import engine.frontend.RenderableLine;
 import engine.frontend.RenderableOval;
 import engine.physics.Vector;
+import game.Enemy;
+import game.EnemyController;
 import other.Utilities;
 
 /**

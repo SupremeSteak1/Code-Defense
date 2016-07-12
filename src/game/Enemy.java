@@ -70,9 +70,10 @@ public class Enemy implements GameObject{
 			Vector pos = path.getNode(position).getPosition();
 			Vector to = path.getNode(position+1).getPosition();
 			
-			double dx = (to.getxComp()-pos.getxComp())/speed;
-			double dy = (to.getyComp()-pos.getyComp())/speed;
+			double dx = (to.getxComp()-pos.getxComp());
+			double dy = (to.getyComp()-pos.getyComp());
 			Vector change = new Vector(dx,dy);
+			change = change.normalize().scalarMultiply(1/speed);
 			if(to.getxComp()-currentLocation.getxComp() <= Math.abs(change.getxComp()) && to.getyComp()-currentLocation.getyComp() <= Math.abs(change.getyComp())){
 				position++;
 				System.out.println("Changing direction!");
