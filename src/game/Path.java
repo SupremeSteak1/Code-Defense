@@ -11,19 +11,29 @@ public class Path implements Renderable {
 	
 	private boolean debug = true;
 	private int d_nodeSize = 14;
+	private int size;
 	
 	public Path(Node... nodes) {
+		int i = 0;
 		this.nodes = new ArrayList<Node>();
-		for(Node n : nodes)
+		for(Node n : nodes){
 			this.nodes.add(n);
+			i++;
+		}
+		size = i;
 	}
 	
 	public Path(ArrayList<Node> nodes) {
 		this.nodes = nodes;
+		size = nodes.size();
 	}
 	
 	public Node getNode(int n){
 		return nodes.get(n);
+	}
+	
+	public int getSize(){
+		return size;
 	}
 
 	@Override

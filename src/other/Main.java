@@ -7,6 +7,7 @@ import engine.backend.GameObjectHandler;
 import engine.backend.Renderer;
 import engine.frontend.Renderable;
 import engine.physics.Vector;
+import game.Enemy;
 import game.Node;
 import game.Node.NodeType;
 import game.Path;
@@ -28,6 +29,8 @@ public class Main {
 		nodes.add(new Node(NodeType.TRANSIT, new Vector(200, 240)));
 		nodes.add(new Node(NodeType.END, new Vector(90, 300)));
 		Path p = new Path(nodes);
+		Enemy test = new Enemy(p, "Error!",0,10,1000);
+		goh.registerGameObject(test);
 		while(true){
 			r.setQueue(new ArrayList<Renderable>());
 			goh.updateGameObjects();
