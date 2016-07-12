@@ -36,8 +36,16 @@ public class Enemy implements GameObject{
 		this.text = text;
 	}
 
+	/**
+	 * Use getCurrentLocation for exact position
+	 * @return previous node
+	 */
 	public int getPosition() {
 		return position;
+	}
+	
+	public Vector getCurrentLocation(){
+		return currentLocation;
 	}
 
 	public double getHp() {
@@ -54,6 +62,7 @@ public class Enemy implements GameObject{
 	private void die() {
 		System.out.println("Dead!");
 		GameObjectHandler.unregisterGameObject(this);
+		EnemyController.unregisterEnemy(this);
 	}
 	
 	private void move(){
