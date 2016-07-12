@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import engine.backend.GameObjectHandler;
 import engine.backend.Renderer;
 import engine.frontend.Renderable;
-import engine.physics.RigidBody;
 import engine.physics.Vector;
-import game.ControllableEntity;
 import game.Node;
 import game.Node.NodeType;
 import game.Path;
@@ -22,16 +20,6 @@ public class Main {
 	public static void main(String[] args){
 		Renderer r = new Renderer(WINDOW_WIDTH, WINDOW_HEIGHT);
 		GameObjectHandler goh = new GameObjectHandler();
-		ControllableEntity player = new ControllableEntity(100,100,20,128,128);
-		//Level l = new Level();
-		player.setFilePath("res/testPlayer.png");
-		player.setSpeed(2);
-		RigidBody thomas = new RigidBody(200,200, 15, 64, 64);
-		thomas.setFilePath("res/thomas.png");
-		player.setProjectileSpeed(5);
-		//goh.registerGameObject(player);
-		//goh.registerGameObject(l);
-		//goh.registerGameObject(thomas);
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		nodes.add(new Node(NodeType.START, new Vector(10, 10)));
 		nodes.add(new Node(NodeType.TRANSIT, new Vector(500, 30)));
