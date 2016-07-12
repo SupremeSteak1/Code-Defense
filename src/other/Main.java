@@ -1,15 +1,17 @@
 package other;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import engine.backend.GameObjectHandler;
 import engine.backend.Renderer;
 import engine.frontend.Renderable;
-import engine.input.Keyboard;
-import engine.physics.PhysicsController;
 import engine.physics.RigidBody;
+import engine.physics.Vector;
 import game.ControllableEntity;
-import game.Level;
+import game.Node;
+import game.Node.NodeType;
+import game.Path;
 
 public class Main {
 	
@@ -27,13 +29,22 @@ public class Main {
 		RigidBody thomas = new RigidBody(200,200, 15, 64, 64);
 		thomas.setFilePath("res/thomas.png");
 		player.setProjectileSpeed(5);
-		goh.registerGameObject(player);
+		//goh.registerGameObject(player);
 		//goh.registerGameObject(l);
-		goh.registerGameObject(thomas);
+		//goh.registerGameObject(thomas);
+		ArrayList<Node> nodes = new ArrayList<Node>();
+		nodes.add(new Node(NodeType.START, new Vector(10, 10)));
+		nodes.add(new Node(NodeType.TRANSIT, new Vector(500, 30)));
+		nodes.add(new Node(NodeType.TRANSIT, new Vector(900, 70)));
+		nodes.add(new Node(NodeType.TRANSIT, new Vector(550, 140)));
+		nodes.add(new Node(NodeType.TRANSIT, new Vector(200, 240)));
+		nodes.add(new Node(NodeType.END, new Vector(90, 300)));
+		Path p = new Path(nodes);
 		while(true){
 			r.setQueue(new ArrayList<Renderable>());
 			goh.updateGameObjects();
 			goh.renderGameObjects(r);
+			r.addToQueue(p);
 			r.refreshQueue();
 			r.repaint();
 			r.revalidate();

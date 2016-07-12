@@ -48,6 +48,13 @@ public class Renderer extends JFrame {
 				queue.add(r);
 		}
 	}
+	/**
+	 * Add a single Renderable to the current render queue
+	 * @param a the Renderable object to be added to the current queue
+	 */
+	public void addToQueue(Renderable a) {
+		queue.add(a);
+	}
 	
 	/**
 	 * This pushes the staged render queue to the display class for rendering.
