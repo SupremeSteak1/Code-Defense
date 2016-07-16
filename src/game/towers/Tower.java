@@ -1,5 +1,6 @@
 package game.towers;
 
+import java.awt.Color;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
@@ -35,13 +36,25 @@ public class Tower implements GameObject{
 		toRender = new ArrayList<>();
 		toRender.add(new RenderableOval((int)position.getxComp(),(int)position.getyComp(),20,20));
 	}
+	
+	public Vector getPosition(){
+		return position;
+	}
+	
+	public double getRange(){
+		return range;
+	}
+	
+	public double getMaxCooldown(){
+		return maxCooldown;
+	}
 
 	@Override
 	public ArrayList<Renderable> render() {
 		return toRender;
 	}
 	
-	private Enemy enemiesInRange(){
+	protected Enemy enemiesInRange(){
 		Enemy closest = null;
 		for(Enemy e : EnemyController.getEnemies()){
 			if(Utilities.addVectors(e.getCurrentLocation(),this.position.getOppositeVector()).getMagnitude() <= range)
@@ -50,8 +63,8 @@ public class Tower implements GameObject{
 		return closest;
 	}
 
-	private void fire(Enemy e) {
-		toRender.add(new RenderableLine(new Line2D.Double(position.getxComp(),position.getyComp(),e.getCurrentLocation().getxComp(),e.getCurrentLocation().getyComp())));
+	public void fire(Enemy e) {
+		toRender.add(new RenderableLine(new Line2D.Double(position.getxComp(),position.getyComp(),e.getCurrentLocation().getxComp(),e.getCurrentLocation().getyComp()), Color.RED));
 		e.takeDamage(5);
 		System.out.println("Fire in the hole!");
 		cooldown=maxCooldown;

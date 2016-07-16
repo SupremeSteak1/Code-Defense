@@ -12,6 +12,7 @@ import game.EnemyController;
 import game.Node;
 import game.Node.NodeType;
 import game.towers.Tower;
+import game.towers.TryCatchTower;
 import game.Path;
 
 public class Main {
@@ -36,7 +37,7 @@ public class Main {
 		Path p = new Path(nodes);
 		Enemy test = new Enemy(p, "Error!",0,50,3);
 		Enemy test2 = new Enemy(p, "Error!",1,50,3);
-		Tower temp = new Tower(200, new Vector(870,100), 100);
+		Tower temp = new TryCatchTower(200, new Vector(870,100), 100);
 		goh.registerGameObject(test);
 		goh.registerGameObject(test2);
 		ec.registerEnemy(test);

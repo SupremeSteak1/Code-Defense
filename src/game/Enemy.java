@@ -17,6 +17,19 @@ public class Enemy implements GameObject{
 	private Vector currentLocation;
 	private double hp;
 	private double speed; //Lower speed is higher
+	private boolean[] conditions;
+	/* CONDITIONS:
+	 * 0 - SLOWED
+	 * 1 -
+	 * 2 -
+	 * 3 -
+	 * 4 -
+	 * 5 -
+	 * 6 -
+	 * 7 -
+	 * 9 -
+	 */
+	private double[] conditionTime;
 	
 	public Enemy(Path path, String text, int position, double hp, double speed) {
 		super();
@@ -26,6 +39,11 @@ public class Enemy implements GameObject{
 		this.hp = hp;
 		currentLocation = path.getNode(position).getPosition();
 		this.speed = speed;
+		conditions = new boolean[10];
+		for(boolean b : conditions){
+			b = false;
+		}
+		conditionTime = new double[conditions.length];
 	}
 
 	public String getText() {
@@ -50,6 +68,11 @@ public class Enemy implements GameObject{
 
 	public double getHp() {
 		return hp;
+	}
+	
+	public void applyCondition(int condition, int time){
+		conditions[condition] = true;
+		conditionTime[condition] = time;
 	}
 	
 	public void takeDamage(double amount){
@@ -96,7 +119,21 @@ public class Enemy implements GameObject{
 
 	@Override
 	public void update() {
-		move();
+		if(conditions[0]){
+			speed*=1.5;
+			move();
+			speed/=1.5;
+		}else{
+			move();
+		}
+		for(int i = 0; i < conditions.length; i++){
+			if(conditionTime[i] > 0){
+				conditionTime[i]--;
+				if(conditionTime[i] <=0){
+					conditions[i] = false;
+				}
+			}
+		}
 	}
 	
 	
