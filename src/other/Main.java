@@ -1,6 +1,7 @@
 package other;
 
 import java.util.ArrayList;
+import java.awt.Color;
 
 import engine.backend.GameObjectHandler;
 import engine.backend.Renderer;
@@ -34,8 +35,8 @@ public class Main {
 		nodes.add(new Node(NodeType.TRANSIT, new Vector(200, 240)));
 		nodes.add(new Node(NodeType.END, new Vector(90, 300)));
 		Path p = new Path(nodes);
-		Enemy test = new Enemy(p, "Error!",0,50,2);
-		Enemy test2 = new Enemy(p, "Error!",1,50,2);
+		Enemy test = new Enemy(p, "Error!",0,50,2, Color.RED);
+		Enemy test2 = new Enemy(p, "Error!",1,50,2, Color.RED);
 		Tower temp = new TryCatchTower(150, new Vector(870,100), 100);
 		Tower temp2 = new TryCatchTower(150, new Vector(770,200), 100);
 		goh.registerGameObject(test);

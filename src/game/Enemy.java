@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import engine.backend.GameObject;
@@ -17,6 +18,7 @@ public class Enemy implements GameObject{
 	private Vector currentLocation;
 	private double hp;
 	private double speed; //Lower speed is higher
+	private Color color;
 	private boolean[] conditions;
 	/* CONDITIONS:
 	 * 0 - SLOWED
@@ -44,6 +46,23 @@ public class Enemy implements GameObject{
 			b = false;
 		}
 		conditionTime = new double[conditions.length];
+		color = Color.BLACK;
+	}
+	
+	public Enemy(Path path, String text, int position, double hp, double speed, Color c) {
+		super();
+		this.path = path;
+		this.text = text;
+		this.position = position;
+		this.hp = hp;
+		currentLocation = path.getNode(position).getPosition();
+		this.speed = speed;
+		conditions = new boolean[10];
+		for(boolean b : conditions){
+			b = false;
+		}
+		conditionTime = new double[conditions.length];
+		color = c;
 	}
 
 	public String getText() {
@@ -111,7 +130,7 @@ public class Enemy implements GameObject{
 
 	@Override
 	public ArrayList<Renderable> render() {
-		RenderableText image = new RenderableText(text, (int) currentLocation.getxComp(), (int) currentLocation.getyComp());
+		RenderableText image = new RenderableText(text, (int) currentLocation.getxComp(), (int) currentLocation.getyComp(), color);
 		ArrayList<Renderable> toRender = new ArrayList<>();
 		toRender.add(image);
 		return toRender;
