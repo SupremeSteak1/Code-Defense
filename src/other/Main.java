@@ -1,6 +1,5 @@
 package other;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import engine.backend.GameObjectHandler;
@@ -11,9 +10,9 @@ import game.Enemy;
 import game.EnemyController;
 import game.Node;
 import game.Node.NodeType;
+import game.Path;
 import game.towers.Tower;
 import game.towers.TryCatchTower;
-import game.Path;
 
 public class Main {
 	
@@ -35,14 +34,16 @@ public class Main {
 		nodes.add(new Node(NodeType.TRANSIT, new Vector(200, 240)));
 		nodes.add(new Node(NodeType.END, new Vector(90, 300)));
 		Path p = new Path(nodes);
-		Enemy test = new Enemy(p, "Error!",0,50,3);
-		Enemy test2 = new Enemy(p, "Error!",1,50,3);
-		Tower temp = new TryCatchTower(200, new Vector(870,100), 100);
+		Enemy test = new Enemy(p, "Error!",0,50,2);
+		Enemy test2 = new Enemy(p, "Error!",1,50,2);
+		Tower temp = new TryCatchTower(150, new Vector(870,100), 100);
+		Tower temp2 = new TryCatchTower(150, new Vector(770,200), 100);
 		goh.registerGameObject(test);
 		goh.registerGameObject(test2);
 		ec.registerEnemy(test);
 		ec.registerEnemy(test2);
 		goh.registerGameObject(temp);
+		goh.registerGameObject(temp2);
 		while(true){
 			r.setQueue(new ArrayList<Renderable>());
 			goh.updateGameObjects();

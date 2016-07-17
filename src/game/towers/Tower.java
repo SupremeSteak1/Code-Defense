@@ -19,7 +19,7 @@ import other.Utilities;
  * Basic test tower
  * Has a big laser
  */
-public class Tower implements GameObject{
+public class Tower implements GameObject {
 
 	private double range;
 	private Vector position;
@@ -54,7 +54,7 @@ public class Tower implements GameObject{
 		return toRender;
 	}
 	
-	protected Enemy enemiesInRange(){
+	protected Enemy enemyInRange() {
 		Enemy closest = null;
 		for(Enemy e : EnemyController.getEnemies()){
 			if(Utilities.addVectors(e.getCurrentLocation(),this.position.getOppositeVector()).getMagnitude() <= range)
@@ -75,7 +75,7 @@ public class Tower implements GameObject{
 	public void update() {
 		if(cooldown==0){
 			try{
-			fire(enemiesInRange());
+			fire(enemyInRange());
 			}catch(NullPointerException e){
 				System.out.println("Nothing in range");
 			}

@@ -1,6 +1,8 @@
 package other;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 import engine.frontend.Renderable;
 import engine.frontend.RenderableText;
@@ -92,5 +94,13 @@ public class Utilities {
 		double x = magnitude * Math.cos(angle);
 		double y = magnitude * Math.sin(angle);
 		return new Vector(x,y);
+	}
+	
+	/**
+	 * Creates a new random color
+	 * @return the new random color
+	 */
+	public static Color getNewRandomColor() {
+		return new Color(new Random().nextInt(255),new Random().nextInt(255),new Random().nextInt(255));
 	}
 }
