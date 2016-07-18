@@ -2,9 +2,12 @@ package game;
 
 import java.util.Vector;
 
+import engine.backend.GameObjectHandler;
+
 public class EnemyController {
 
 	private static Vector<Enemy> enemies; //Java util vector
+	private GameObjectHandler goh;
 	
 	public EnemyController(){
 		enemies = new Vector<Enemy>();

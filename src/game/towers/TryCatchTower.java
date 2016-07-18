@@ -53,7 +53,6 @@ public class TryCatchTower extends Tower {
 				fire(super.enemyInRange());
 				System.out.println("FIRED");
 			} catch(NullPointerException e) {
-				System.out.println("Nothing in range");
 			}
 		} else {
 			if(enemyFired != null && timeFired != 0 && System.currentTimeMillis() - timeFired <= 100) {

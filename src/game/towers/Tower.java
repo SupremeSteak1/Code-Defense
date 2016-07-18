@@ -49,6 +49,14 @@ public class Tower implements GameObject {
 		return maxCooldown;
 	}
 
+	public double getCooldown() {
+		return cooldown;
+	}
+
+	public void setCooldown(double cooldown) {
+		this.cooldown = cooldown;
+	}
+
 	@Override
 	public ArrayList<Renderable> render() {
 		return toRender;
@@ -77,11 +85,11 @@ public class Tower implements GameObject {
 			try{
 			fire(enemyInRange());
 			}catch(NullPointerException e){
-				System.out.println("Nothing in range");
 			}
 		}else{
 			cooldown--;
 			if(toRender.size()>1){
+				System.out.println("Delete");
 				toRender.remove(1);
 			}
 		}

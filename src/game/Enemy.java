@@ -139,6 +139,7 @@ public class Enemy implements GameObject{
 	@Override
 	public void update() {
 		if(conditions[0]){
+			//System.out.println("GOTTA GO FAST");
 			speed*=1.5;
 			move();
 			speed/=1.5;
